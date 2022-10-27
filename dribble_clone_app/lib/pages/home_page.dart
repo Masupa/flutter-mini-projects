@@ -1,6 +1,7 @@
 import 'package:dribble_clone_app/misc/colors.dart';
 import 'package:dribble_clone_app/widgets/icon_container.dart';
 import 'package:dribble_clone_app/widgets/large_text.dart';
+import 'package:dribble_clone_app/widgets/list_tile.dart';
 import 'package:dribble_clone_app/widgets/search_bar.dart';
 import 'package:dribble_clone_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +32,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.mainColor,
-      body: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
-        child: Column(
-          children: [
-            // App Bar
-            Row(
+      body: Column(
+        children: [
+          // App Bar
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Name | Today's Date
@@ -58,48 +59,103 @@ class HomePage extends StatelessWidget {
                 IconContainer(icon: Icons.notification_add)
               ],
             ),
+          ),
 
-            // Search Bar
-            const Padding(
-              padding: EdgeInsets.only(top: 35),
-              child: SearchBar(),
+          // Search Bar
+          const Padding(
+            padding: EdgeInsets.only(left: 30, right: 30, top: 35),
+            child: SearchBar(),
+          ),
+
+          // Expressions Sections
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 30, right: 30, top: 35, bottom: 30),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SmallText(
+                      text: 'How do you feel?',
+                      color: AppColors.whiteColor,
+                      isBold: true,
+                      textSize: 15.5,
+                    ),
+                    const Icon(Icons.more_horiz, color: AppColors.whiteColor)
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    expressionItem('Badly'),
+                    expressionItem('Fine'),
+                    expressionItem('Well'),
+                    expressionItem('Excellent'),
+                  ],
+                )
+              ],
             ),
+          ),
 
-            // Expressions Sections
-            Padding(
-              padding: const EdgeInsets.only(top: 35),
+          // Exercises Section
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
+              decoration: const BoxDecoration(
+                color: AppColors.whiteColor,
+              ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SmallText(
-                        text: 'How do you feel?',
-                        color: AppColors.whiteColor,
-                        isBold: true,
-                        textSize: 15.5,
-                      ),
-                      const Icon(Icons.more_horiz, color: AppColors.whiteColor)
-                    ],
+                  // Exercises Header
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SmallText(
+                          text: 'Exercises',
+                          color: AppColors.blackColor,
+                          isBold: true,
+                          textSize: 15.5,
+                        ),
+                        const Icon(Icons.more_horiz,
+                            color: AppColors.blackColor)
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      expressionItem('Badly'),
-                      expressionItem('Fine'),
-                      expressionItem('Well'),
-                      expressionItem('Excellent'),
-                    ],
+
+                  // Exercises
+                  Expanded(
+                    child: ListView(
+                      children: const [
+                        Tile(),
+                        Tile(),
+                        Tile(),
+                        Tile(),
+                        Tile(),
+                        Tile(),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-
-            // Exercises Section
-          ],
-        ),
+          )
+        ],
       ),
+    );
+  }
+}
+
+class ExercisesListView extends StatelessWidget {
+  const ExercisesListView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Exercises'),
     );
   }
 }
