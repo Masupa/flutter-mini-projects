@@ -2,6 +2,7 @@ import 'package:dribble_clone_app/misc/colors.dart';
 import 'package:dribble_clone_app/widgets/icon_container.dart';
 import 'package:dribble_clone_app/widgets/large_text.dart';
 import 'package:dribble_clone_app/widgets/list_tile.dart';
+import 'package:dribble_clone_app/widgets/main_app_bar.dart';
 import 'package:dribble_clone_app/widgets/search_bar.dart';
 import 'package:dribble_clone_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -35,31 +36,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           // App Bar
-          Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Name | Today's Date
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LargeText(
-                      text: 'Jared',
-                      color: AppColors.whiteColor,
-                    ),
-                    const SizedBox(height: 7.5),
-                    SmallText(
-                      text: '23 Jan, 2021',
-                      color: AppColors.whiteColor,
-                    ),
-                  ],
-                ),
-                // Bell Icon
-                IconContainer(icon: Icons.notification_add)
-              ],
-            ),
-          ),
+          const MainAppBar(),
 
           // Search Bar
           const Padding(
@@ -129,13 +106,27 @@ class HomePage extends StatelessWidget {
                   // Exercises
                   Expanded(
                     child: ListView(
-                      children: const [
-                        Tile(),
-                        Tile(),
-                        Tile(),
-                        Tile(),
-                        Tile(),
-                        Tile(),
+                      children: [
+                        Tile(
+                          icon: Icons.emoji_emotions,
+                          title: 'Speaking Skills',
+                          subtitle: '16 Exercises',
+                        ),
+                        Tile(
+                          icon: Icons.emoji_emotions,
+                          title: 'Speaking Skills',
+                          subtitle: '16 Exercises',
+                        ),
+                        Tile(
+                          icon: Icons.emoji_emotions,
+                          title: 'Speaking Skills',
+                          subtitle: '16 Exercises',
+                        ),
+                        Tile(
+                          icon: Icons.emoji_emotions,
+                          title: 'Speaking Skills',
+                          subtitle: '16 Exercises',
+                        ),
                       ],
                     ),
                   )
