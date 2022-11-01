@@ -1,5 +1,6 @@
 import 'package:dribble_clone_app/misc/colors.dart';
 import 'package:dribble_clone_app/widgets/category_container.dart';
+import 'package:dribble_clone_app/widgets/large_text.dart';
 import 'package:dribble_clone_app/widgets/list_tile.dart';
 import 'package:dribble_clone_app/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -43,20 +44,18 @@ class CategoriesPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SmallText(
+                      LargeText(
                         text: 'Category',
                         color: AppColors.blackColor,
-                        isBold: true,
                         textSize: 15.5,
                       ),
-                      const Icon(Icons.more_horiz, color: AppColors.blackColor)
+                      const Icon(Icons.more_horiz,
+                          color: AppColors.sectionDotsColor)
                     ],
                   ),
                   const SizedBox(height: 25),
 
-                  // Categories
-                  // ignore: todo
-                  // TODO: polish this section 😀
+                  // CATEGORY SECTION
                   Column(
                     children: [
                       Row(
@@ -96,40 +95,36 @@ class CategoriesPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SmallText(
-                          text: 'Consultants',
+                        LargeText(
+                          text: 'Consultant',
                           color: AppColors.blackColor,
-                          isBold: true,
                           textSize: 15.5,
                         ),
                         const Icon(Icons.more_horiz,
-                            color: AppColors.blackColor)
+                            color: AppColors.sectionDotsColor)
                       ],
                     ),
                   ),
 
                   // Consultants ListView
+                  // ignore: todo
+                  // TODO: Improve "imageAssetName" to pass different images
                   Expanded(
                     child: ListView(
-                      children: [
-                        Tile(
-                          icon: Icons.emoji_emotions,
+                      children: const [
+                        ImageTile(
+                          imageAssetName: 'person1',
                           title: 'Bobby Singer',
                           subtitle: 'Education',
                         ),
-                        Tile(
-                          icon: Icons.emoji_emotions,
-                          title: 'Bobby Singer',
+                        ImageTile(
+                          imageAssetName: 'person1',
+                          title: 'John Doe',
                           subtitle: 'Education',
                         ),
-                        Tile(
-                          icon: Icons.emoji_emotions,
-                          title: 'Bobby Singer',
-                          subtitle: 'Education',
-                        ),
-                        Tile(
-                          icon: Icons.emoji_emotions,
-                          title: 'Bobby Singer',
+                        ImageTile(
+                          imageAssetName: 'person1',
+                          title: 'Pearl Thusi',
                           subtitle: 'Education',
                         ),
                       ],
