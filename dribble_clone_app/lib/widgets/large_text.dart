@@ -1,5 +1,6 @@
 import 'package:dribble_clone_app/misc/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LargeText extends StatelessWidget {
   String text;
@@ -16,9 +17,9 @@ class LargeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Hi, $text!",
-      style: TextStyle(
-        fontWeight: FontWeight.w600,
+      text,
+      style: GoogleFonts.montserrat(
+        fontWeight: FontWeight.bold,
         fontSize: textSize,
         color: color,
       ),
