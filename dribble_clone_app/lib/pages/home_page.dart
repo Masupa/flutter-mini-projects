@@ -7,6 +7,8 @@ import 'package:dribble_clone_app/widgets/search_bar.dart';
 import 'package:dribble_clone_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
+import 'package:iconsax/iconsax.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class HomePage extends StatelessWidget {
   Column expressionItem(String text) {
     return Column(
       children: [
-        IconContainer(
+        const IconContainer(
           icon: Icons.emoji_emotions,
           width: 70,
           height: 70,
@@ -53,11 +55,10 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SmallText(
+                    LargeText(
                       text: 'How do you feel?',
                       color: AppColors.whiteColor,
-                      isBold: true,
-                      textSize: 15.5,
+                      textSize: 15.0,
                     ),
                     const Icon(Icons.more_horiz, color: AppColors.whiteColor)
                   ],
@@ -91,10 +92,9 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SmallText(
+                        LargeText(
                           text: 'Exercises',
                           color: AppColors.blackColor,
-                          isBold: true,
                           textSize: 15.5,
                         ),
                         const Icon(Icons.more_horiz,
@@ -106,27 +106,24 @@ class HomePage extends StatelessWidget {
                   // Exercises
                   Expanded(
                     child: ListView(
-                      children: [
+                      children: const [
                         Tile(
-                          icon: Icons.emoji_emotions,
+                          icon: Iconsax.lovely,
                           title: 'Speaking Skills',
                           subtitle: '16 Exercises',
+                          containerColor: Color(0xFFf78557),
                         ),
                         Tile(
-                          icon: Icons.emoji_emotions,
-                          title: 'Speaking Skills',
-                          subtitle: '16 Exercises',
+                          icon: Iconsax.user,
+                          title: 'Reading Speed',
+                          subtitle: '6 Exercises',
                         ),
                         Tile(
-                          icon: Icons.emoji_emotions,
+                          icon: Iconsax.user,
                           title: 'Speaking Skills',
                           subtitle: '16 Exercises',
-                        ),
-                        Tile(
-                          icon: Icons.emoji_emotions,
-                          title: 'Speaking Skills',
-                          subtitle: '16 Exercises',
-                        ),
+                          containerColor: Color(0xFFf5597c),
+                        )
                       ],
                     ),
                   )
@@ -136,17 +133,6 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class ExercisesListView extends StatelessWidget {
-  const ExercisesListView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Exercises'),
     );
   }
 }

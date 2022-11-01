@@ -1,5 +1,6 @@
-import 'package:dribble_clone_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:dribble_clone_app/widgets/small_text.dart';
 
 import '../misc/colors.dart';
 import 'icon_container.dart';
@@ -20,7 +21,7 @@ class MainAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               LargeText(
-                text: 'Jared',
+                text: 'Hi, Jared',
                 color: AppColors.whiteColor,
               ),
               const SizedBox(height: 7.5),
@@ -30,8 +31,8 @@ class MainAppBar extends StatelessWidget {
               ),
             ],
           ),
-          // Bell Icon
-          IconContainer(icon: Icons.notification_add)
+          // Notification Icon
+          const IconContainer(icon: Iconsax.notification1)
         ],
       ),
     );

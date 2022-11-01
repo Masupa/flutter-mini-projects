@@ -1,5 +1,11 @@
 import 'package:dribble_clone_app/misc/colors.dart';
+import 'package:dribble_clone_app/pages/categories_page.dart';
+import 'package:dribble_clone_app/pages/chat_page.dart';
+import 'package:dribble_clone_app/pages/home_page.dart';
+import 'package:dribble_clone_app/pages/profile_page.dart';
 import 'package:flutter/material.dart';
+
+import 'package:iconsax/iconsax.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -14,10 +20,10 @@ class _MainPageState extends State<MainPage> {
 
   // App Pages
   List pages = const [
-    Text('Home Page'),
-    Text('Categories Page'),
-    Text('Chat Page'),
-    Text('Profile Page')
+    HomePage(),
+    CategoriesPage(),
+    ChatPage(),
+    ProfilePage(),
   ];
 
   // Function called when a NavigationBarItem is tapped
@@ -31,9 +37,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // App Body
-      body: Center(
-        child: pages[navCurrentIndex],
-      ),
+      body: pages[navCurrentIndex],
 
       // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
@@ -46,13 +50,14 @@ class _MainPageState extends State<MainPage> {
         unselectedItemColor: AppColors.secondaryColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        backgroundColor: AppColors.whiteColor,
 
         // NavBarItems
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Category'),
-          BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Inbox'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
+          BottomNavigationBarItem(icon: Icon(Iconsax.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Iconsax.menu), label: 'Category'),
+          BottomNavigationBarItem(icon: Icon(Iconsax.message), label: 'Inbox'),
+          BottomNavigationBarItem(icon: Icon(Iconsax.user), label: 'Profile')
         ],
       ),
     );
