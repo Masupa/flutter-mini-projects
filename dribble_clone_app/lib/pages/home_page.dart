@@ -1,5 +1,4 @@
 import 'package:dribble_clone_app/misc/colors.dart';
-import 'package:dribble_clone_app/widgets/icon_container.dart';
 import 'package:dribble_clone_app/widgets/large_text.dart';
 import 'package:dribble_clone_app/widgets/list_tile.dart';
 import 'package:dribble_clone_app/widgets/main_app_bar.dart';
@@ -9,15 +8,17 @@ import 'package:flutter/material.dart';
 
 import 'package:iconsax/iconsax.dart';
 
+import '../widgets/emoji_container.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   // Expression Section | Items
-  Column expressionItem(String text) {
+  Column expressionItem(String text, String emojiText) {
     return Column(
       children: [
-        const IconContainer(
-          icon: Icons.emoji_emotions,
+        EmojiContainer(
+          emojiText: emojiText,
           width: 70,
           height: 70,
         ),
@@ -67,10 +68,10 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    expressionItem('Badly'),
-                    expressionItem('Fine'),
-                    expressionItem('Well'),
-                    expressionItem('Excellent'),
+                    expressionItem('Badly', '😔'),
+                    expressionItem('Fine', '😊'),
+                    expressionItem('Well', '😆'),
+                    expressionItem('Excellent', '😃'),
                   ],
                 )
               ],
