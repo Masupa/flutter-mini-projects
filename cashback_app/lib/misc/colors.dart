@@ -7,4 +7,5 @@ class AppColors {
   static const Color secondaryTextColor = Color(0xFF8e8f93);
   static const Color containerColor = Color(0xFF1c1d21);
   static const Color thirdTextColor = Color(0xFF1c1d21);
+  static const Color blueTextColor = Color(0xFF7BD0FF);
 }
