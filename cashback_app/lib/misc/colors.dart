@@ -8,4 +8,6 @@ class AppColors {
   static const Color containerColor = Color(0xFF1c1d21);
   static const Color thirdTextColor = Color(0xFF1c1d21);
   static const Color blueTextColor = Color(0xFF7BD0FF);
+  static const Color greyContainerColor = Color(0xFF323337);
+  static const Color whiteColor = Color(0xFFffffff);
 }
