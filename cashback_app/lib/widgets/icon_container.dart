@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 
 class IconContainer extends StatelessWidget {
   final IconData icon;
-  const IconContainer({Key? key, required this.icon}) : super(key: key);
+  final String navRoute;
+  const IconContainer({
+    Key? key,
+    required this.icon,
+    required this.navRoute,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-        Navigator.pushNamed(context, '/');
+        Navigator.pushNamed(context, navRoute);
       },
       child: Material(
         elevation: 50.0,
@@ -37,6 +42,3 @@ class IconContainer extends StatelessWidget {
     );
   }
 }
-
-// Navigate back to home page
-        // Navigator.pushNamed(context, '/');
