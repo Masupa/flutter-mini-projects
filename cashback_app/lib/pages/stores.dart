@@ -121,20 +121,29 @@ class _StoresPageState extends State<StoresPage> {
                         // TODO: Make clickable button
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 35),
-                            child: Container(
-                              alignment: Alignment.center,
-                              margin: const EdgeInsets.only(top: 20),
-                              width: double.infinity,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: AppColors.selectColorLight,
+                            padding: const EdgeInsets.only(bottom: 35, top: 20),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(30),
+                              onTap: () {
+                                Navigator.pushNamed(context, "/item_page");
+                              },
+                              child: Material(
+                                elevation: 10,
                                 borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: const LargeText(
-                                text: "Let's go shopping",
-                                textSize: 25,
-                                textColor: Colors.black87,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: double.infinity,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: const LargeText(
+                                    text: "Let's go shopping",
+                                    textSize: 25,
+                                    textColor: Colors.black87,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
