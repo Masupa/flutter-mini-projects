@@ -16,13 +16,24 @@ class CustomAppBar extends StatelessWidget {
     return isHome
         ? Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [IconContainer(icon: icon)],
+            children: [
+              IconContainer(
+                icon: icon,
+                navRoute: "/",
+              )
+            ],
           )
         : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const IconContainer(icon: Icons.arrow_back),
-              IconContainer(icon: icon),
+              const IconContainer(
+                icon: Icons.arrow_back,
+                navRoute: "/",
+              ),
+              IconContainer(
+                icon: icon,
+                navRoute: "/cart_page",
+              ),
             ],
           );
   }
