@@ -1,16 +1,31 @@
-# cashback_app
+# Table of Content
+* `General information`
+* `App Screenshots`
+* `Design Source`
 
-A new Flutter project.
+## General Information
+This projects contains a flutter app of Cashback App Design from dribble (source below).
 
-## Getting Started
+✨ The Home Screen consists of:
+    - the balance,
+    - the button that you can use to scan the receipt,
+    - the accrual block,
+    - and the offer block.
 
-This project is a starting point for a Flutter application.
+✨ The Shop Screen displays:
+    - the shop details,
+    - a few products,
+    - and the Let's Go Shopping 🛍️ button.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![app](cashback_app/assets/app_screenshots/home_page.png)
+
+![app](cashback_app/assets/app_screenshots/stores_page.png)
+
+![app] (cashback_app/assets/app_screenshots/buy_item_page.png)
+
+
+## Design Source
+![app](https://dribbble.com/shots/19828094-Cashback-Mobile-IOS-App)
