@@ -24,8 +24,8 @@ This projects contains a flutter app of Cashback App Design from dribble (source
 
 ![app](assets/app_screenshots/stores_page.png)
 
-![app] (assets/app_screenshots/buy_item_page.png)
+![app](assets/app_screenshots/buy_item_page.png)
 
 
 ## Design Source
-![app](https://dribbble.com/shots/19828094-Cashback-Mobile-IOS-App)
+<a href="https://dribbble.com/shots/19828094-Cashback-Mobile-IOS-App" target="_blank">Dribble: Cashback App Design</a>
