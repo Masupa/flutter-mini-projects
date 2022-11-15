@@ -15,6 +15,15 @@ class StoresPage extends StatefulWidget {
 }
 
 class _StoresPageState extends State<StoresPage> {
+  // Images Names
+  final imagesNames = <String>[
+    'nike_one',
+    'nike_two',
+    'nike_three',
+    'nike_four',
+    'nike_five'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,12 +99,12 @@ class _StoresPageState extends State<StoresPage> {
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   ShopItemContainer(
-                                    itemImageName: "nike",
+                                    itemImageName: imagesNames[0],
                                   ),
                                   ShopItemContainer(
-                                    itemImageName: "nike",
+                                    itemImageName: imagesNames[1],
                                   ),
                                 ],
                               ),
@@ -103,12 +112,12 @@ class _StoresPageState extends State<StoresPage> {
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   ShopItemContainer(
-                                    itemImageName: "nike",
+                                    itemImageName: imagesNames[4],
                                   ),
                                   ShopItemContainer(
-                                    itemImageName: "nike",
+                                    itemImageName: imagesNames[3],
                                   ),
                                 ],
                               ),
