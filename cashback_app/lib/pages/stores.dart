@@ -99,23 +99,21 @@ class _StoresPageState extends State<StoresPage> {
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: GridView.count(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1.1,
-                              mainAxisSpacing: 10,
-                              crossAxisSpacing: 10,
+                            child: GridView.builder(
+                              itemCount: imagesNames.length,
                               padding: EdgeInsets.zero,
-                              physics: const NeverScrollableScrollPhysics(),
-                              children: [
-                                ShopItemContainer(
-                                    itemImageName: imagesNames[0]),
-                                ShopItemContainer(
-                                    itemImageName: imagesNames[1]),
-                                ShopItemContainer(
-                                    itemImageName: imagesNames[4]),
-                                ShopItemContainer(
-                                    itemImageName: imagesNames[3]),
-                              ],
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1.1,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                              ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return ShopItemContainer(
+                                  itemImageName: imagesNames[index],
+                                );
+                              },
                             ),
                           ),
                         ),
@@ -182,34 +180,3 @@ class _StoresPageState extends State<StoresPage> {
     );
   }
 }
-
-
-// Column(
-//                             children: [
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   ShopItemContainer(
-//                                     itemImageName: imagesNames[0],
-//                                   ),
-//                                   ShopItemContainer(
-//                                     itemImageName: imagesNames[1],
-//                                   ),
-//                                 ],
-//                               ),
-//                               const SizedBox(height: 10),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   ShopItemContainer(
-//                                     itemImageName: imagesNames[4],
-//                                   ),
-//                                   ShopItemContainer(
-//                                     itemImageName: imagesNames[3],
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
