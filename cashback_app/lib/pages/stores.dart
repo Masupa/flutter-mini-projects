@@ -15,8 +15,19 @@ class StoresPage extends StatefulWidget {
 }
 
 class _StoresPageState extends State<StoresPage> {
-  // Images Names
-  final imagesNames = <String>[
+  // Variable to track what is selected
+  bool shoeTagSelected = true;
+
+  // Number of items in Store
+  late int numberOfItems = shoeImageNames.length;
+
+  // Shoe Image Names
+  final shoeImageNames = <String>[
+    'nike_one',
+    'nike_two',
+    'nike_three',
+    'nike_four',
+    'nike_five',
     'nike_one',
     'nike_two',
     'nike_three',
@@ -24,8 +35,26 @@ class _StoresPageState extends State<StoresPage> {
     'nike_five'
   ];
 
-  // Number of items in Store
-  late int numberOfItems = imagesNames.length;
+  // Clothing Image Names
+  final clothingImageNames = <String>[
+    'nike_clothe_one',
+    'nike_clothe_two',
+    'nike_clothe_three',
+    'nike_clothe_four'
+  ];
+
+  // Func to handle selected tags
+  void handleTagsSelected(bool shoeTag) {
+    setState(() {
+      if (shoeTag == true) {
+        shoeTagSelected = true;
+        numberOfItems = shoeImageNames.length;
+      } else {
+        shoeTagSelected = false;
+        numberOfItems = clothingImageNames.length;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +113,10 @@ class _StoresPageState extends State<StoresPage> {
                               ),
 
                               // Tags
-                              const TagsContainer(
+                              TagsContainer(
                                 firstTagText: "Clothes",
                                 secondTagText: "Shoes",
+                                handleTagSelected: handleTagsSelected,
                               ),
                             ],
                           ),
@@ -100,7 +130,9 @@ class _StoresPageState extends State<StoresPage> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: GridView.builder(
-                              itemCount: imagesNames.length,
+                              itemCount: shoeTagSelected
+                                  ? shoeImageNames.length
+                                  : clothingImageNames.length,
                               padding: EdgeInsets.zero,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
@@ -111,7 +143,9 @@ class _StoresPageState extends State<StoresPage> {
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return ShopItemContainer(
-                                  itemImageName: imagesNames[index],
+                                  itemImageName: shoeTagSelected
+                                      ? shoeImageNames[index]
+                                      : clothingImageNames[index],
                                 );
                               },
                             ),

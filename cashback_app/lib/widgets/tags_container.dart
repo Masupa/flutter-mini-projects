@@ -12,12 +12,14 @@ import 'small_text.dart';
 class TagsContainer extends StatefulWidget {
   final String firstTagText;
   final String secondTagText;
+  final Function handleTagSelected;
 
   // Constructor
   const TagsContainer({
     Key? key,
     required this.firstTagText,
     required this.secondTagText,
+    required this.handleTagSelected,
   }) : super(key: key);
 
   @override
@@ -35,9 +37,11 @@ class _TagsContainerState extends State<TagsContainer> {
       if (tagName == 'clothes') {
         clothesTag = true;
         shoesTag = false;
+        widget.handleTagSelected(false);
       } else {
         clothesTag = false;
         shoesTag = true;
+        widget.handleTagSelected(true);
       }
     });
   }
