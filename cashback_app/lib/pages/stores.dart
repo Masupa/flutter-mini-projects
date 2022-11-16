@@ -24,6 +24,9 @@ class _StoresPageState extends State<StoresPage> {
     'nike_five'
   ];
 
+  // Number of items in Store
+  late int numberOfItems = imagesNames.length;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +41,7 @@ class _StoresPageState extends State<StoresPage> {
               // ignore: todo
               // TODO: Make this a back button
               icon: Icons.shopping_bag,
-              isHome: false,
+              currentPage: "store",
             ),
           ),
 
@@ -69,11 +72,11 @@ class _StoresPageState extends State<StoresPage> {
                               // Nike Offers
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  LargeText(text: "Nike", textSize: 30),
-                                  SizedBox(height: 5.0),
+                                children: [
+                                  const LargeText(text: "Nike", textSize: 30),
+                                  const SizedBox(height: 5.0),
                                   SmallText(
-                                    text: "136 Offers",
+                                    text: "$numberOfItems Offers",
                                     textSize: 20,
                                     textColor: AppColors.blueTextColor,
                                   )
@@ -83,7 +86,7 @@ class _StoresPageState extends State<StoresPage> {
                               // Tags
                               const TagsContainer(
                                 firstTagText: "Clothes",
-                                secondTagText: "Sports",
+                                secondTagText: "Shoes",
                               ),
                             ],
                           ),
@@ -91,44 +94,37 @@ class _StoresPageState extends State<StoresPage> {
 
                         // Store Items
                         // ignore: todo
-                        // TODO: Add more images to the items
-                        Padding(
-                          padding: const EdgeInsets.only(top: 35),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ShopItemContainer(
-                                    itemImageName: imagesNames[0],
-                                  ),
-                                  ShopItemContainer(
-                                    itemImageName: imagesNames[1],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ShopItemContainer(
-                                    itemImageName: imagesNames[4],
-                                  ),
-                                  ShopItemContainer(
-                                    itemImageName: imagesNames[3],
-                                  ),
-                                ],
-                              ),
-                            ],
+                        // TODO: Later: Change images displayed depending on
+                        //Tag clicked. Download nike clothing images...
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: GridView.count(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1.1,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                              padding: EdgeInsets.zero,
+                              physics: const NeverScrollableScrollPhysics(),
+                              children: [
+                                ShopItemContainer(
+                                    itemImageName: imagesNames[0]),
+                                ShopItemContainer(
+                                    itemImageName: imagesNames[1]),
+                                ShopItemContainer(
+                                    itemImageName: imagesNames[4]),
+                                ShopItemContainer(
+                                    itemImageName: imagesNames[3]),
+                              ],
+                            ),
                           ),
                         ),
 
                         // Let's Go Button
                         // ignore: todo
                         // TODO: Make clickable button
-                        Expanded(
+                        SizedBox(
+                          height: 150,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 35, top: 20),
                             child: InkWell(
@@ -186,3 +182,34 @@ class _StoresPageState extends State<StoresPage> {
     );
   }
 }
+
+
+// Column(
+//                             children: [
+//                               Row(
+//                                 mainAxisAlignment:
+//                                     MainAxisAlignment.spaceBetween,
+//                                 children: [
+//                                   ShopItemContainer(
+//                                     itemImageName: imagesNames[0],
+//                                   ),
+//                                   ShopItemContainer(
+//                                     itemImageName: imagesNames[1],
+//                                   ),
+//                                 ],
+//                               ),
+//                               const SizedBox(height: 10),
+//                               Row(
+//                                 mainAxisAlignment:
+//                                     MainAxisAlignment.spaceBetween,
+//                                 children: [
+//                                   ShopItemContainer(
+//                                     itemImageName: imagesNames[4],
+//                                   ),
+//                                   ShopItemContainer(
+//                                     itemImageName: imagesNames[3],
+//                                   ),
+//                                 ],
+//                               ),
+//                             ],
+//                           ),
