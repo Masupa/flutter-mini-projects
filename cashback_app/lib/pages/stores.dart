@@ -1,60 +1,16 @@
+import 'package:cashback_app/models/store_model.dart';
 import 'package:cashback_app/widgets/dynamic_app_bar.dart';
 import 'package:cashback_app/widgets/large_text.dart';
 import 'package:cashback_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../misc/colors.dart';
 import '../widgets/shop_item_container.dart';
 import '../widgets/tags_container.dart';
 
-class StoresPage extends StatefulWidget {
+class StoresPage extends StatelessWidget {
   const StoresPage({Key? key}) : super(key: key);
-
-  @override
-  State<StoresPage> createState() => _StoresPageState();
-}
-
-class _StoresPageState extends State<StoresPage> {
-  // Variable to track what is selected
-  bool shoeTagSelected = true;
-
-  // Number of items in Store
-  late int numberOfItems = shoeImageNames.length;
-
-  // Shoe Image Names
-  final shoeImageNames = <String>[
-    'nike_one',
-    'nike_two',
-    'nike_three',
-    'nike_four',
-    'nike_five',
-    'nike_one',
-    'nike_two',
-    'nike_three',
-    'nike_four',
-    'nike_five'
-  ];
-
-  // Clothing Image Names
-  final clothingImageNames = <String>[
-    'nike_clothe_one',
-    'nike_clothe_two',
-    'nike_clothe_three',
-    'nike_clothe_four'
-  ];
-
-  // Func to handle selected tags
-  void handleTagsSelected(bool shoeTag) {
-    setState(() {
-      if (shoeTag == true) {
-        shoeTagSelected = true;
-        numberOfItems = shoeImageNames.length;
-      } else {
-        shoeTagSelected = false;
-        numberOfItems = clothingImageNames.length;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +61,8 @@ class _StoresPageState extends State<StoresPage> {
                                   const LargeText(text: "Nike", textSize: 30),
                                   const SizedBox(height: 5.0),
                                   SmallText(
-                                    text: "$numberOfItems Offers",
+                                    text:
+                                        "${Provider.of<StoreModel>(context, listen: true).numberOfItems} Offers",
                                     textSize: 20,
                                     textColor: AppColors.blueTextColor,
                                   )
@@ -116,7 +73,9 @@ class _StoresPageState extends State<StoresPage> {
                               TagsContainer(
                                 firstTagText: "Clothes",
                                 secondTagText: "Shoes",
-                                handleTagSelected: handleTagsSelected,
+                                handleTagSelected: context
+                                    .read<StoreModel>()
+                                    .handleTagsSelected,
                               ),
                             ],
                           ),
@@ -130,9 +89,16 @@ class _StoresPageState extends State<StoresPage> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: GridView.builder(
-                              itemCount: shoeTagSelected
-                                  ? shoeImageNames.length
-                                  : clothingImageNames.length,
+                              itemCount:
+                                  context.watch<StoreModel>().shoeTagSelected
+                                      ? context
+                                          .watch<StoreModel>()
+                                          .shoeImageNames
+                                          .length
+                                      : context
+                                          .watch<StoreModel>()
+                                          .clothingImageNames
+                                          .length,
                               padding: EdgeInsets.zero,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
@@ -143,9 +109,15 @@ class _StoresPageState extends State<StoresPage> {
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return ShopItemContainer(
-                                  itemImageName: shoeTagSelected
-                                      ? shoeImageNames[index]
-                                      : clothingImageNames[index],
+                                  itemImageName: context
+                                          .watch<StoreModel>()
+                                          .shoeTagSelected
+                                      ? context
+                                          .watch<StoreModel>()
+                                          .shoeImageNames[index]
+                                      : context
+                                          .watch<StoreModel>()
+                                          .clothingImageNames[index],
                                 );
                               },
                             ),

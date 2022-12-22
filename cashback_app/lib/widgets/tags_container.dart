@@ -1,4 +1,6 @@
+import 'package:cashback_app/models/store_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../misc/colors.dart';
 import 'small_text.dart';
@@ -27,25 +29,6 @@ class TagsContainer extends StatefulWidget {
 }
 
 class _TagsContainerState extends State<TagsContainer> {
-  // Object to keep track of tapped `tags`
-  bool clothesTag = false;
-  bool shoesTag = true;
-
-  // Func to handle Gesture Taps
-  void _handleTagTap(String tagName) {
-    setState(() {
-      if (tagName == 'clothes') {
-        clothesTag = true;
-        shoesTag = false;
-        widget.handleTagSelected(false);
-      } else {
-        clothesTag = false;
-        shoesTag = true;
-        widget.handleTagSelected(true);
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,14 +38,15 @@ class _TagsContainerState extends State<TagsContainer> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => _handleTagTap('clothes'),
+              onTap: () => Provider.of<TagsModel>(context, listen: false)
+                  .handleTagTap('clothes', widget.handleTagSelected),
               child: Container(
                 height: 30,
                 alignment: Alignment.center,
                 padding:
                     const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                 decoration: BoxDecoration(
-                  color: clothesTag
+                  color: context.watch<TagsModel>().clothesTag
                       ? const Color.fromARGB(255, 127, 127, 127)
                       : AppColors.greyContainerColor,
                   borderRadius: BorderRadius.circular(20),
@@ -70,7 +54,7 @@ class _TagsContainerState extends State<TagsContainer> {
                 child: SmallText(
                   text: '#${widget.firstTagText}',
                   textSize: 15.0,
-                  textColor: clothesTag
+                  textColor: context.watch<TagsModel>().clothesTag
                       ? AppColors.whiteColor
                       : const Color.fromARGB(126, 253, 255, 255),
                 ),
@@ -87,14 +71,15 @@ class _TagsContainerState extends State<TagsContainer> {
           children: [
             const SizedBox(width: 40),
             GestureDetector(
-              onTap: () => _handleTagTap('shoes'),
+              onTap: () => Provider.of<TagsModel>(context, listen: false)
+                  .handleTagTap('shoes', widget.handleTagSelected),
               child: Container(
                 height: 30,
                 alignment: Alignment.center,
                 padding:
                     const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                 decoration: BoxDecoration(
-                  color: shoesTag
+                  color: context.watch<TagsModel>().shoesTag
                       ? const Color.fromARGB(255, 127, 127, 127)
                       : AppColors.greyContainerColor,
                   borderRadius: BorderRadius.circular(20),
@@ -102,7 +87,7 @@ class _TagsContainerState extends State<TagsContainer> {
                 child: SmallText(
                   text: '#${widget.secondTagText}',
                   textSize: 15.0,
-                  textColor: shoesTag
+                  textColor: context.watch<TagsModel>().shoesTag
                       ? AppColors.whiteColor
                       : const Color.fromARGB(126, 253, 255, 255),
                 ),

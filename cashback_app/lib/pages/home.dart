@@ -1,9 +1,11 @@
+import 'package:cashback_app/models/price_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cashback_app/widgets/dynamic_app_bar.dart';
 import 'package:cashback_app/widgets/large_text.dart';
 import 'package:cashback_app/widgets/small_text.dart';
 
 import 'package:cashback_app/misc/colors.dart';
+import 'package:provider/provider.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
 import '../widgets/cashback_container.dart';
@@ -26,7 +28,10 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // AppBar
-            const CustomAppBar(icon: Icons.home),
+            const CustomAppBar(
+              icon: Icons.home,
+              currentPage: "home",
+            ),
 
             // Total Balance
             Padding(
@@ -35,9 +40,11 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SmallText(text: 'Total Balance'),
-                  LargeText(
-                      text:
-                          '\$${accountBalanace.toString()[0]} ${accountBalanace.toString().substring(1)}')
+                  Consumer<PriceModel>(
+                    builder: (context, value, child) => LargeText(
+                        text:
+                            '\$${value.accountBalanace.toString()[0]} ${value.accountBalanace.toString().substring(1)}'),
+                  )
                 ],
               ),
             ),
@@ -135,7 +142,10 @@ class HomePage extends StatelessWidget {
                       text: "View Collection",
                       textSize: 17.5,
                     ),
-                    onSubmit: () {},
+                    onSubmit: () {
+                      // Navigate to the store's page
+                      Navigator.pushNamed(context, '/store_page');
+                    },
                   )
                 ],
               ),

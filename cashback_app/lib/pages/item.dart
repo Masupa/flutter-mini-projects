@@ -1,8 +1,13 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cashback_app/misc/colors.dart';
+import 'package:cashback_app/models/store_model.dart';
 import 'package:cashback_app/widgets/large_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/dynamic_app_bar.dart';
+import '../widgets/item_size_container.dart';
 import '../widgets/small_text.dart';
 
 class ItemPage extends StatefulWidget {
@@ -13,8 +18,6 @@ class ItemPage extends StatefulWidget {
 }
 
 class _ItemPageState extends State<ItemPage> {
-  final int itemPrice = 390;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +31,11 @@ class _ItemPageState extends State<ItemPage> {
               // ignore: todo
               // TODO: Make this a back button
               icon: Icons.shopping_bag,
-              isHome: false,
+              currentPage: "item",
             ),
           ),
 
+          // ignore: todo
           // TODO: Find appropriate container name
           Expanded(
             child: Stack(
@@ -81,8 +85,11 @@ class _ItemPageState extends State<ItemPage> {
                                   color: AppColors.greyContainerColor,
                                   borderRadius: BorderRadius.circular(50),
                                 ),
+                                // ignore: todo
+                                // TODO: Later: Insert dynamic image;
+                                // passed through stores when clicked
                                 child: Image.asset(
-                                  "assets/images/nike.png",
+                                  "assets/images/nike_one.png",
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -93,13 +100,21 @@ class _ItemPageState extends State<ItemPage> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: const [
-                                    ItemSizeContainer(itemSize: 3.5),
+                                    ItemSizeContainer(
+                                      itemSize: 3.5,
+                                    ),
                                     SizedBox(height: 13.3),
-                                    ItemSizeContainer(itemSize: 4),
+                                    ItemSizeContainer(
+                                      itemSize: 4,
+                                    ),
                                     SizedBox(height: 13.3),
-                                    ItemSizeContainer(itemSize: 4.5),
+                                    ItemSizeContainer(
+                                      itemSize: 4.5,
+                                    ),
                                     SizedBox(height: 13.3),
-                                    ItemSizeContainer(itemSize: 5),
+                                    ItemSizeContainer(
+                                      itemSize: 5,
+                                    ),
                                   ],
                                 ),
                               )
@@ -117,10 +132,12 @@ class _ItemPageState extends State<ItemPage> {
                               color: AppColors.whiteColor,
                               borderRadius: BorderRadius.circular(40),
                             ),
-                            child: SmallText(
-                              text: "Buy for \$$itemPrice",
-                              textColor: AppColors.mainColor,
-                              textSize: 30,
+                            child: Consumer<StoreModel>(
+                              builder: (context, value, child) => SmallText(
+                                text: "Buy for \$${value.itemPrice}",
+                                textColor: AppColors.mainColor,
+                                textSize: 30,
+                              ),
                             ),
                           ),
                         )
@@ -149,31 +166,6 @@ class _ItemPageState extends State<ItemPage> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class ItemSizeContainer extends StatelessWidget {
-  final double itemSize;
-  const ItemSizeContainer({
-    Key? key,
-    required this.itemSize,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 75,
-      height: 65,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: AppColors.greyContainerColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: LargeText(
-        text: "$itemSize",
-        textSize: 20,
       ),
     );
   }
